@@ -1,0 +1,6 @@
+mlflow:
+  experiment_name: "SMC01_EMBEDDING_ADD_20230131"
+  run_name: "${hydra:runtime.choices.experiment}"
+  tracking_uri: http://localhost:5000
+tensorboard:
+  name: "SMC01"

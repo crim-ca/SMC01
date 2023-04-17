@@ -1,0 +1,43 @@
+defaults:
+  - model: attention
+  - dataset: gdps_metar_step
+  - split: train_6_7_val_7
+  - scheduler: reduce_lr_on_plateau
+  - _self_
+
+
+n_stations: 1226
+
+# Job
+timeout_min: 5000
+
+# Logging
+log_every_n_steps: 50
+
+
+# Dataloader
+batch_size: 81
+concat_collate: False
+cpus_per_task: 8
+
+
+# Optimizer
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 1e-3
+  weight_decay: 1e-5
+
+scheduler_interval: epoch
+# scheduler:
+  # factor: 0.2
+  # patience: 20
+
+accumulate_grad_batches: 1
+
+patience: 30
+
+callbacks:
+- _target_: pytorch_lightning.callbacks.early_stopping.EarlyStopping
+  patience: ${experiment.patience}
+  monitor: Val/RMSE
+  mode: min

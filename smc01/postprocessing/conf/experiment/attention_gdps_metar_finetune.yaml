@@ -1,0 +1,46 @@
+# From a pretrained attention_gdps_metar model, finetune it on another network.
+
+defaults:
+  - model: attention
+  - dataset: gdps_metar_step
+  - split: train_6_7_val_7
+  - scheduler: reduce_lr_on_plateau
+  - _self_
+
+n_stations: 1226
+
+# Job
+timeout_min: 4000
+
+# Logging
+log_every_n_steps: 1
+
+
+# Dataloader
+batch_size: 80
+concat_collate: False
+cpus_per_task: 8
+
+
+val_subset: bootstrap
+
+checkpoint_path: 
+
+freeze_reference_set: False
+
+freeze_upper: False
+
+# Optimizer
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 1e-3
+  weight_decay: 0.0
+scheduler:
+  patience: 10
+
+callbacks:
+- _target_: pytorch_lightning.callbacks.early_stopping.EarlyStopping
+  patience: 20
+  monitor: Val/RMSE
+  mode: min
+

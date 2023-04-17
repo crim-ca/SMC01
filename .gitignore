@@ -1,0 +1,14 @@
+*-checkpoint.ipynb
+.vscode*
+.idea
+*.pyc
+*.egg-info
+.nodeids
+nosetests.xml
+*.out
+.env
+.ipynb_checkpoints
+.DS_Store
+.png
+outputs
+multirun

@@ -1,0 +1,6 @@
+# The Yearly EMOS model does not have different models for the forecast id.
+# It only has one model for the 00:00 forecast and the 12:00 forecast.
+
+_target_: smc01.postprocessing.model.YearlyEMOS
+n_forecast_daily: 2
+n_steps_daily: 8

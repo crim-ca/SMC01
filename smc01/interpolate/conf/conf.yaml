@@ -1,0 +1,20 @@
+defaults:
+- database: iem
+- export: parquet
+- _self_
+
+hydra:
+  job:
+    name: InterpolateWeather
+  run:
+    dir: ${oc.env:SMC01_RUNS_DIR}/interpolate/outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: ${oc.env:SMC01_RUNS_DIR}/interpolate/multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    subdir: ${hydra.job.num}
+input_dir: ???
+output_dir: ???
+processes: ${env:SLURM_CPUS_ON_NODE,4}
+limit_per_pass:
+overwrite: True  # Do nothing if output file already exists.
+obs_tolerance: 20  # Use observations that are up to x min off the hour.
+index: 

@@ -1,0 +1,23 @@
+defaults:
+  - model: raw_gdps
+  - dataset: gdps_metar
+  - split: train_7_val_7
+  - _self_
+
+timeout_min: 600
+
+n_features: 1
+n_stations: 1226
+
+log_every_n_steps: 100
+
+# Should the examples be concatenated or stacked to form a batch.
+concat_collate: True
+
+batch_size: 1
+
+callbacks:
+- _target_: pytorch_lightning.callbacks.early_stopping.EarlyStopping
+  patience: 5
+  monitor: Val/RMSE
+  mode: min

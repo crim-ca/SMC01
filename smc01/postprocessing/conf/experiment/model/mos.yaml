@@ -1,0 +1,9 @@
+_target_: smc01.postprocessing.model.EMOS
+n_forecast: 730
+n_steps: 81
+
+forecast_filter_size: 61
+lead_filter_size: 3
+
+forecast_filter_dilation: 2  # Since there are two forecasts per day in gdps override emos filter dilation.
+lead_filter_dilation: 8  # 8 time steps per day so we dilate the smoothing by 8.

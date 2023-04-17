@@ -1,0 +1,2 @@
+include smc01/stations*.csv
+include smc01/luigi/luigi.cfg

@@ -1,0 +1,6 @@
+_target_: smc01.postprocessing.model.MLP
+n_hidden: 2
+embedding_size: 128
+station_embedding_size: 16
+dropout: 0.0
+activation: sigmoid

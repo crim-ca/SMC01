@@ -1,0 +1,27 @@
+defaults:
+  - model: mlp
+  - dataset: gdps_metar_metadata_features
+  - split: train_6_7_val_7
+  - _self_
+
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 1e-3
+
+timeout_min: 600
+
+log_every_n_steps: 100
+
+# Should the examples be concatenated or stacked to form a batch.
+concat_collate: True
+
+batch_size: 1
+# Useful for larger models, but it's convenient to disable it if the model fits in 
+# memory.
+limit_dataframe_size: 10000
+
+callbacks:
+- _target_: pytorch_lightning.callbacks.early_stopping.EarlyStopping
+  patience: 5
+  monitor: Val/RMSE
+  mode: min

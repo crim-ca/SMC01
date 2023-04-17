@@ -1,0 +1,46 @@
+defaults:
+  - model: attention
+  - dataset: gdps_metar_step
+  - _self_
+
+
+# Job
+timeout_min: 2880
+
+# Logging
+log_every_n_steps: 1
+
+
+# Dataloader
+batch_size: 81
+concat_collate: False
+train_begin: 2019-01-01
+train_end: 2021-03-01
+val_begin: 2021-03-01
+val_end: 2022-03-01
+cpus_per_task: 12
+
+val_subset: bootstrap
+
+# Optimizer
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 1e-3
+  weight_decay: 1e-5
+
+reduce_lr_factor: 0.2
+
+callbacks:
+- _target_: pytorch_lightning.callbacks.early_stopping.EarlyStopping
+  patience: 5
+  monitor: Val/RMSE
+  mode: min
+
+
+#n_forecast: 730
+#n_lead_time: 81
+
+
+
+
+

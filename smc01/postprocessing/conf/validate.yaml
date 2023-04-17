@@ -1,0 +1,17 @@
+defaults:
+  - experiment: emos_gdps_metar
+  - logging: debug
+  - _self_
+
+# Redirect outputs to a fixed directory to avoid scattering output dirs all across
+# the filesystem.
+hydra:
+  run:
+    dir: ${oc.env:SMC01_RUNS_DIR}/postprocessing_validate/outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: ${oc.env:SMC01_RUNS_DIR}/postprocessing_validate/multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  job:
+    chdir: True
+
+checkpoint_path:
+num_workers: ${oc.decode:${oc.env:SLURM_CPUS_PER_TASK,4}}

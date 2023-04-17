@@ -1,0 +1,2 @@
+SMC01_APPNAME = "smc01"
+SMC01_VERSION = "1.0.0"

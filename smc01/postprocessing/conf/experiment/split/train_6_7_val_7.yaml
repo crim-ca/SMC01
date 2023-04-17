@@ -1,0 +1,7 @@
+train_begin: 2019-01-01
+train_end: 2020-07-01
+val_begin: 2020-07-01
+val_end: 2020-12-01
+test_begin: 2020-12-01
+test_end: 2021-12-01
+name: train_6_7_val_7

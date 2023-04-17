@@ -1,0 +1,7 @@
+begin: 2019-01-01
+end: 2021-12-02
+n_workers: ${oc.env:SLURM_CPUS_PER_TASK,8}
+local_scheduler: True
+scheduler_url: http://localhost:8082/
+n_jobs: 1
+job_id: 0

@@ -1,0 +1,9 @@
+_target_: smc01.postprocessing.dataset.SMCParquetDataset
+dataset_dir: 
+transform:
+  _target_: smc01.postprocessing.transform.CompositeTransform
+  transforms: 
+    - _target_: smc01.postprocessing.transform.NormalizeDataframe
+    - _target_: smc01.postprocessing.transform.DataframeToExample
+      features: 18
+      add_metadata_features: True

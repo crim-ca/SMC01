@@ -1,0 +1,14 @@
+defaults:
+- submitit_slurm
+
+timeout_min: 480
+cpus_per_task: ${oc.select:experiment.cpus_per_task,16}
+tasks_per_node: 1
+nodes: 1
+mem_gb: 32
+array_parallelism: 12
+partition: short_8h
+setup:
+  - source ${oc.env:HOME}/.bashrc
+  - conda activate smc01
+  - ulimit -u 16384

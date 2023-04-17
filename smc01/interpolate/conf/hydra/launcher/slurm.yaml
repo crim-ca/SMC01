@@ -1,0 +1,12 @@
+defaults:
+  - submitit_slurm
+
+timeout_min: 60
+cpus_per_task: 8
+tasks_per_node: 1
+nodes: 1
+mem_gb: 100
+array_parallelism: 16
+setup:
+  - source ${env:HOME}/.bashrc
+  - conda activate smc01

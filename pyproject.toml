@@ -1,0 +1,19 @@
+[tool.isort]
+# https://pycqa.github.io/isort/docs/configuration/black_compatibility/
+line_length = 88
+multi_line_output = 3
+profile = "black"
+src_paths = ["smc01"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.pyright]
+exclude = ["**/__pycache__", "notebooks/*.ipynb"]
+include = ["smc01"]
+
+pythonPlatform = "Linux"
+pythonVersion = "3.9"
+reportMissingImports = true
+reportMissingTypeStubs = false

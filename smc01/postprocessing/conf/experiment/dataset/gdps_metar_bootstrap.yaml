@@ -1,0 +1,13 @@
+_target_: smc01.postprocessing.dataset.SMCParquetDataset
+dataset_dir: null
+station_subset: bootstrap
+ensure_columns: True
+remove_step_zero: False
+transform:
+  _target_: smc01.postprocessing.transform.CompositeTransform
+  transforms: 
+    - _target_: smc01.postprocessing.transform.NormalizeDataframe
+    - _target_: smc01.postprocessing.transform.DataframeToExample
+      station_subset: full
+      features: ${oc.select:experiment.n_features,5}
+      add_metadata_features: False

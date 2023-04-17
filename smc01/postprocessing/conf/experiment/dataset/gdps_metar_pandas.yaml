@@ -1,0 +1,8 @@
+# Not super useful for training, but useful when booting the dataset from a notebook.
+
+_target_: smc01.postprocessing.dataset.SMCParquetDataset
+dataset_dir: null
+transform:
+  _target_: smc01.postprocessing.transform.CompositeTransform
+  transforms: 
+    - _target_: smc01.postprocessing.transform.NormalizeDataframe

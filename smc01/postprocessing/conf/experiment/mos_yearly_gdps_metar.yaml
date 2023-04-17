@@ -1,0 +1,31 @@
+defaults:
+  - model: mos_yearly
+  - dataset: gdps_metar
+  - split: train_6_7_val_7
+  - _self_
+
+batch_size: 2
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 5e-3
+
+timeout_min: 600
+
+# Should the examples be concatenated or stacked to form a batch.
+concat_collate: True
+
+log_every_n_steps: 1
+
+n_features: 1
+n_forecast: 730
+n_lead_time: 81
+
+# Useful for larger models, but it's convenient to disable it if the model fits in 
+# memory.
+# limit_dataframe_size: 50000
+
+callbacks:
+- _target_: pytorch_lightning.callbacks.early_stopping.EarlyStopping
+  patience: 5
+  monitor: Val/RMSE
+  mode: min

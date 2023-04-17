@@ -1,0 +1,10 @@
+# The interpolation on model version 8 seems to be causing big problems with the loss,
+# so using this split is not recommended.
+
+train_begin: 2019-07-03
+train_end: 2021-07-01
+val_begin: 2021-07-01
+val_end: 2021-12-01
+test_begin: 2021-12-01
+test_end: 2022-03-01
+name: train_7_val_8

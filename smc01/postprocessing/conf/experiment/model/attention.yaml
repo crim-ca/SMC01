@@ -1,0 +1,6 @@
+_target_: smc01.postprocessing.model.attention.SMCAttentionModel
+n_heads: 8
+embedding_size: 512
+n_blocks: 4
+dropout: 0.0
+add_meta_tokens: True 
